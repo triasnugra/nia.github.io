@@ -8196,7 +8196,7 @@ textarea.form-control-lg {
 
 .text-green {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-green-rgb), var(--bs-text-opacity)) !important;
+  color: rgba(var(--bs-green: #198754;), var(--bs-text-opacity)) !important;
 }
 .text-success {
   --bs-text-opacity: 1;
