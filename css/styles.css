@@ -11568,7 +11568,11 @@ html {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
+.text-gradient-end {
+  background: -webkit-linear-gradient(315deg, #008B8B 0%, #6495ED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .rounded-4 {
   border-radius: 1rem !important;
 }
