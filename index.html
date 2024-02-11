@@ -32,59 +32,6 @@
                 </div>
             </nav>
 
-
-
-  <title>Countup to Romance</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f0f0;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    h1 {
-      font-size: 2em;
-    }
-    p {
-      font-size: 2em;
-    }
-  </style>
-</head>
-<body>
-  <h1>we have known each other since</h1>
-  <p id="countup"></p>
-
-  <script>
-    // Tanggal awal
-    var startDate = new Date("2013-08-17T00:00:00");
-
-    function updateCountup() {
-      var now = new Date();
-      var difference = now - startDate;
-
-      var days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      difference -= days * (1000 * 60 * 60 * 24);
-
-      var hours = Math.floor(difference / (1000 * 60 * 60));
-      difference -= hours * (1000 * 60 * 60);
-
-      var minutes = Math.floor(difference / (1000 * 60));
-      difference -= minutes * (1000 * 60);
-
-      var seconds = Math.floor(difference / 1000);
-
-      document.getElementById("countup").textContent = days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds ago";
-    }
-
-    // Panggil fungsi updateCountup setiap detik
-    setInterval(updateCountup, 1000);
-  </script>
-</body>
-
-
             
             <!-- Header-->
             <header class="py-5">
