@@ -32,12 +32,11 @@
                 </div>
             </nav>
 
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Countup to Romance</title>
+  <title>we have known each other since</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -45,7 +44,7 @@
       margin-top: 100px;
     }
     h1 {
-      font-size: 3em;
+      font-size: 2em;
     }
     p {
       font-size: 2em;
@@ -53,7 +52,6 @@
   </style>
 </head>
 <body>
-  <h1>Countup to Romance</h1>
   <p id="countup"></p>
 
   <script>
@@ -75,11 +73,15 @@
 
       var seconds = Math.floor(difference / 1000);
 
-      document.getElementById("countup").textContent = days + " hari, " + hours + " jam, " + minutes + " menit, " + seconds + " detik";
+      document.getElementById("countup").textContent = days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds";
     }
 
     // Panggil fungsi updateCountup setiap detik
     setInterval(updateCountup, 1000);
+      <div id="countup-container">
+    <p id="countup"></p>
+    <p id="text-below">ago.</p>
+  </div>
   </script>
 </body>
 </html>
