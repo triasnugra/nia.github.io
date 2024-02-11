@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>hope you always be happy</title>
+        <title>happier than before</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Custom Google font-->
@@ -31,6 +31,60 @@
                     </div>
                 </div>
             </nav>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countup to Romance</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    h1 {
+      font-size: 3em;
+    }
+    p {
+      font-size: 2em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Countup to Romance</h1>
+  <p id="countup"></p>
+
+  <script>
+    // Tanggal awal
+    var startDate = new Date("2013-08-17T00:00:00");
+
+    function updateCountup() {
+      var now = new Date();
+      var difference = now - startDate;
+
+      var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      difference -= days * (1000 * 60 * 60 * 24);
+
+      var hours = Math.floor(difference / (1000 * 60 * 60));
+      difference -= hours * (1000 * 60 * 60);
+
+      var minutes = Math.floor(difference / (1000 * 60));
+      difference -= minutes * (1000 * 60);
+
+      var seconds = Math.floor(difference / 1000);
+
+      document.getElementById("countup").textContent = days + " hari, " + hours + " jam, " + minutes + " menit, " + seconds + " detik";
+    }
+
+    // Panggil fungsi updateCountup setiap detik
+    setInterval(updateCountup, 1000);
+  </script>
+</body>
+</html>
+
+            
             <!-- Header-->
             <header class="py-5">
                 <div class="container px-5 pb-5">
