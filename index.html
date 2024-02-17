@@ -32,7 +32,7 @@
                 </div>
             </nav>
 
-
+ <title>we have known each other since</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -48,8 +48,8 @@
   <div id="countup"></div>
 
   <script>
-    // Tanggal dimulai dari bulan Februari 2024
-    const startDate = new Date('February 1, 2024 00:00:00').getTime();
+    // Tanggal dimulai dari bulan Februari 2014
+    const startDate = new Date('February 1, 2014 00:00:00').getTime();
 
     function updateCountup() {
       const now = new Date().getTime();
@@ -61,10 +61,10 @@
       const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
       document.getElementById('countup').innerHTML = `
-        ${days} hari,
-        ${hours} jam,
-        ${minutes} menit,
-        ${seconds} detik
+        ${days} days,
+        ${hours} hours,
+        ${minutes} minutes,
+        ${seconds} seconds ago.
       `;
     }
 
