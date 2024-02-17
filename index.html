@@ -33,26 +33,46 @@
             </nav>
 
 
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    #countup {
+      font-size: 2em;
+    }
+  </style>
 </head>
 <body>
-  <h1>Countup Since July 2014</h1>
   <div id="countup"></div>
 
   <script>
-    // Mendapatkan tanggal saat ini
-    var currentDate = new Date();
+    // Tanggal dimulai dari bulan Februari 2024
+    const startDate = new Date('February 1, 2024 00:00:00').getTime();
 
-    // Tanggal saat Anda mengenal pacar Anda
-    var startDate = new Date("February 2014");
+    function updateCountup() {
+      const now = new Date().getTime();
+      const difference = now - startDate;
 
-    // Menghitung perbedaan waktu antara dua tanggal
-    var difference = currentDate.getTime() - startDate.getTime();
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-    // Mengonversi perbedaan waktu ke dalam hari
-    var daysDifference = difference / (1000 * 60 * 60 * 24);
+      document.getElementById('countup').innerHTML = `
+        ${days} hari,
+        ${hours} jam,
+        ${minutes} menit,
+        ${seconds} detik
+      `;
+    }
 
-    // Menampilkan hasil countup
-    document.getElementById("countup").innerText = "Sudah " + Math.floor(daysDifference) + " hari mengenal pacar Anda.";
+    // Update countup setiap 1 detik
+    setInterval(updateCountup, 1000);
+
+    // Panggil fungsi updateCountup untuk menampilkan countup pada saat halaman dimuat
+    updateCountup();
   </script>
 </body>
 </html>
