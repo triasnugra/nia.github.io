@@ -37,7 +37,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countup Timer</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        #timer {
+            font-size: 2rem;
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -45,9 +68,30 @@
         <div id="timer"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Tanggal awal Anda mengenal pacar (dalam milidetik)
+        var startDate = new Date("2023-01-01").getTime();
+
+        // Update timer setiap detik
+        var timer = setInterval(function() {
+            // Waktu saat ini (dalam milidetik)
+            var now = new Date().getTime();
+
+            // Selisih waktu antara sekarang dan tanggal awal (dalam milidetik)
+            var timeDiff = now - startDate;
+
+            // Menghitung jumlah hari, jam, menit, dan detik
+            var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            // Menampilkan waktu di dalam elemen dengan id "timer"
+            document.getElementById("timer").innerHTML = days + " hari " + hours + " jam " + minutes + " menit " + seconds + " detik ";
+        }, 1000);
+    </script>
 </body>
-</html>
+
 
             
             <!-- Header-->
