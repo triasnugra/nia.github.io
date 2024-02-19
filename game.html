@@ -16,10 +16,26 @@
             margin: auto;
             background-color: #ddd;
         }
+        .controls {
+            text-align: center;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <div class="controls">
+        <button id="upBtn">Up</button><br>
+        <button id="leftBtn">Left</button>
+        <button id="rightBtn">Right</button><br>
+        <button id="downBtn">Down</button>
+    </div>
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
@@ -92,33 +108,24 @@
         }
 
         function changeDirection(event) {
-            const LEFT_KEY = 37;
-            const RIGHT_KEY = 39;
-            const UP_KEY = 38;
-            const DOWN_KEY = 40;
-
             const keyPressed = event.keyCode;
-            const goingUp = dy === -gridSize;
-            const goingDown = dy === gridSize;
-            const goingRight = dx === gridSize;
-            const goingLeft = dx === -gridSize;
 
-            if (keyPressed === LEFT_KEY && !goingRight) {
+            if (keyPressed === 37 && dx !== gridSize) { // Left arrow
                 dx = -gridSize;
                 dy = 0;
             }
 
-            if (keyPressed === UP_KEY && !goingDown) {
+            if (keyPressed === 38 && dy !== gridSize) { // Up arrow
                 dx = 0;
                 dy = -gridSize;
             }
 
-            if (keyPressed === RIGHT_KEY && !goingLeft) {
+            if (keyPressed === 39 && dx !== -gridSize) { // Right arrow
                 dx = gridSize;
                 dy = 0;
             }
 
-            if (keyPressed === DOWN_KEY && !goingUp) {
+            if (keyPressed === 40 && dy !== -gridSize) { // Down arrow
                 dx = 0;
                 dy = gridSize;
             }
@@ -160,10 +167,37 @@
             createFood();
         }
 
-        document.addEventListener('keydown', changeDirection);
         createFood();
-
         setInterval(draw, 100);
+
+        // Button event listeners
+        document.getElementById('upBtn').addEventListener('click', function() {
+            if (dy !== gridSize) { // Cannot move upwards when going downwards
+                dx = 0;
+                dy = -gridSize;
+            }
+        });
+
+        document.getElementById('leftBtn').addEventListener('click', function() {
+            if (dx !== gridSize) { // Cannot move left when going right
+                dx = -gridSize;
+                dy = 0;
+            }
+        });
+
+        document.getElementById('rightBtn').addEventListener('click', function() {
+            if (dx !== -gridSize) { // Cannot move right when going left
+                dx = gridSize;
+                dy = 0;
+            }
+        });
+
+        document.getElementById('downBtn').addEventListener('click', function() {
+            if (dy !== -gridSize) { // Cannot move downwards when going upwards
+                dx = 0;
+                dy = gridSize;
+            }
+        });
 
     </script>
     <div id="score" style="color: white; text-align: center;">0</div>
