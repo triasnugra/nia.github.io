@@ -24,39 +24,44 @@
         let dx = 0;
         let dy = 0;
 
-        document.addEventListener("keydown", changeDirection);
+        canvas.addEventListener("touchstart", handleTouchStart, false);
+        canvas.addEventListener("touchmove", handleTouchMove, false);
 
-        function changeDirection(event) {
-            const LEFT_KEY = 37;
-            const RIGHT_KEY = 39;
-            const UP_KEY = 38;
-            const DOWN_KEY = 40;
+        let touchStartX = 0;
+        let touchStartY = 0;
 
-            const keyPressed = event.keyCode;
+        function handleTouchStart(event) {
+            touchStartX = event.touches[0].clientX;
+            touchStartY = event.touches[0].clientY;
+        }
 
-            const goingUp = dy === -box;
-            const goingDown = dy === box;
-            const goingRight = dx === box;
-            const goingLeft = dx === -box;
-
-            if (keyPressed === LEFT_KEY && !goingRight) {
-                dx = -box;
-                dy = 0;
+        function handleTouchMove(event) {
+            if (!touchStartX || !touchStartY) {
+                return;
             }
 
-            if (keyPressed === UP_KEY && !goingDown) {
-                dx = 0;
-                dy = -box;
-            }
+            let touchEndX = event.touches[0].clientX;
+            let touchEndY = event.touches[0].clientY;
 
-            if (keyPressed === RIGHT_KEY && !goingLeft) {
-                dx = box;
-                dy = 0;
-            }
+            let dx = touchEndX - touchStartX;
+            let dy = touchEndY - touchStartY;
 
-            if (keyPressed === DOWN_KEY && !goingUp) {
-                dx = 0;
-                dy = box;
+            if (Math.abs(dx) > Math.abs(dy)) {
+                if (dx > 0 && !goingLeft) {
+                    dx = box;
+                    dy = 0;
+                } else if (dx < 0 && !goingRight) {
+                    dx = -box;
+                    dy = 0;
+                }
+            } else {
+                if (dy > 0 && !goingUp) {
+                    dy = box;
+                    dx = 0;
+                } else if (dy < 0 && !goingDown) {
+                    dy = -box;
+                    dx = 0;
+                }
             }
         }
 
