@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love in the Sky</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    #sky {
+      background-color: #87CEEB; /* Sky blue */
+      height: 100%;
+    }
+
+    #airplane {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100px; /* Adjust size as needed */
+      height: auto;
+      z-index: 1;
+    }
+
+    .cloud {
+      position: absolute;
+      background-color: #FFFFFF; /* White */
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .love-cloud {
+      width: 100px; /* Adjust size as needed */
+      height: 100px; /* Adjust size as needed */
+    }
+  </style>
+</head>
+<body>
+  <div id="sky">
+    <img id="airplane" src="airplane.png" alt="Airplane">
+  </div>
+
+  <script>
+    // Function to create a love-shaped cloud at a random position
+    function createLoveCloud() {
+      const cloud = document.createElement('div');
+      cloud.className = 'cloud love-cloud';
+      cloud.style.top = Math.random() * 90 + '%';
+      cloud.style.left = Math.random() * 90 + '%';
+      document.body.appendChild(cloud);
+    }
+
+    // Create love-shaped clouds periodically
+    setInterval(createLoveCloud, 3000);
+
+    // Make the airplane fly across the sky
+    const airplane = document.getElementById('airplane');
+    let position = -100; // Initial position off-screen
+    const speed = 2; // Adjust speed as needed
+
+    function flyAirplane() {
+      position += speed;
+      airplane.style.left = position + 'px';
+
+      // Reset position if airplane flies out of the screen
+      if (position > window.innerWidth) {
+        position = -100; // Off-screen
+      }
+
+      requestAnimationFrame(flyAirplane);
+    }
+
+    flyAirplane();
+  </script>
+</body>
+</html>
