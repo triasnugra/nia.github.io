@@ -1,8 +1,8 @@
 body, html {
   margin: 0;
   padding: 0;
-  height: 100%;
   overflow: hidden;
+  height: 100%;
 }
 
 .sky {
@@ -14,43 +14,34 @@ body, html {
 .cloud {
   background-image: url('cloud.png');
   background-size: contain;
-  position: absolute;
-  animation: cloudAnimation 20s linear infinite;
-}
-
-.love {
-  width: 100px;
+  width: 150px;
   height: 100px;
-  top: 20%;
-  left: 40%;
-  animation: loveAnimation 20s linear infinite;
+  position: absolute;
+  top: 100px;
+  animation: moveCloud 20s linear infinite;
 }
 
 .plane {
+  background-image: url('plane.png');
+  background-size: contain;
+  width: 200px;
+  height: 100px;
   position: absolute;
   top: 50%;
-  left: 10%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1;
+  animation: movePlane 10s linear infinite;
 }
 
-@keyframes cloudAnimation {
-  0% {
-    left: -100px;
-  }
-  100% {
-    left: 100%;
-  }
+@keyframes moveCloud {
+  0% { left: -150px; }
+  100% { left: 100%; }
 }
 
-@keyframes loveAnimation {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
+@keyframes movePlane {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  25% { transform: translate(-50%, -50%) rotate(-10deg); }
+  50% { transform: translate(-50%, -50%) rotate(0deg); }
+  75% { transform: translate(-50%, -50%) rotate(10deg); }
+  100% { transform: translate(-50%, -50%) rotate(0deg); }
 }
