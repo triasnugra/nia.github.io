@@ -1,0 +1,56 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sky {
+  background-color: #87CEEB; /* Sky Blue */
+  height: 100%;
+  position: relative;
+}
+
+.cloud {
+  background-image: url('cloud.png');
+  background-size: contain;
+  position: absolute;
+  animation: cloudAnimation 20s linear infinite;
+}
+
+.love {
+  width: 100px;
+  height: 100px;
+  top: 20%;
+  left: 40%;
+  animation: loveAnimation 20s linear infinite;
+}
+
+.plane {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+@keyframes cloudAnimation {
+  0% {
+    left: -100px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes loveAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
